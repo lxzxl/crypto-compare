@@ -1,5 +1,6 @@
 {
   "name": "create-next-example-app",
+  "version": "0.0.1",
   "scripts": {
     "dev": "next",
     "build": "next build",
@@ -10,5 +11,7 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
-  "version": "0.0.1"
+  "devDependencies": {
+    "webpack-sources": "^1.1.0"
+  }
 }

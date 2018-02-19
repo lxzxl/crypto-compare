@@ -2,6 +2,8 @@ dependencies:
   next: 5.0.0
   react: 16.2.0
   react-dom: 16.2.0
+devDependencies:
+  webpack-sources: 1.1.0
 packages:
   /@zeit/check-updates/1.1.0:
     dependencies:
@@ -3474,7 +3476,6 @@ packages:
     resolution:
       integrity: sha1-xB8vbDn8FtHNF61LXYlhFK5HDVU=
   /source-list-map/2.0.0:
-    dev: false
     resolution:
       integrity: sha512-I2UmuJSRr/T8jisiROLU3A3ltr+swpniSmNPI4Ml3ZCX6tVnDsuZzK7F2hl5jTqbZBWCEKlj5HRQiPExXLgE8A==
   /source-map-support/0.4.18:
@@ -3490,7 +3491,6 @@ packages:
     resolution:
       integrity: sha1-igOdLRAh0i0eoUyA2OpGi6LvP8w=
   /source-map/0.6.1:
-    dev: false
     engines:
       node: '>=0.10.0'
     resolution:
@@ -3957,7 +3957,6 @@ packages:
     dependencies:
       source-list-map: 2.0.0
       source-map: 0.6.1
-    dev: false
     resolution:
       integrity: sha512-aqYp18kPphgoO5c/+NaUvEeACtZjMESmDChuD3NBciVpah3XpMEU9VAAtIaB1BsfJWWTSdv8Vv1m3T0aRk2dUw==
   /webpack/3.10.0:
@@ -4132,3 +4131,4 @@ specifiers:
   next: ^5.0.0
   react: ^16.2.0
   react-dom: ^16.2.0
+  webpack-sources: ^1.1.0
