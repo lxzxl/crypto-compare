@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@zeit/next-sass": "^0.1.1",
+    "axios": "^0.18.0",
     "bulma": "^0.6.2",
     "koa": "^2.5.0",
     "koa-router": "^7.4.0",
@@ -16,8 +17,5 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
-  "devDependencies": {
-    "extract-loader": "^1.0.2",
-    "webpack-sources": "^1.1.0"
-  }
+  "devDependencies": {}
 }
