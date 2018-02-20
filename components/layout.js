@@ -1,4 +1,4 @@
-import '../styles.scss';
+import '../static/styles.scss';
 import Head from './head';
 const Fragment = React.Fragment;
 
