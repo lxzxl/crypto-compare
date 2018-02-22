@@ -1,33 +1,20 @@
-import axios from 'axios';
 import { Component } from 'react';
-import { array } from 'prop-types';
+import { array, object } from 'prop-types';
+import { fetchCoinNames, fetchCoinList } from '../services/cryptocompare';
 import Layout from '../components/layout';
 import CoinList from '../components/coinList';
 
 class Index extends Component {
-  static async fetchData() {
-    const { data } = await axios.get('https://min-api.cryptocompare.com/data/pricemultifull', {
-      params: {
-        fsyms: 'BTC,ETH,XRP,BCH,LTC,ADA,NEO,XLM,EOS,DASH,IOT,XMR,XEM,ETC,TRX,VEN,LSK,QTUM,BTG,USDT',
-        tsyms: 'USD'
-      }
-    });
-    const displayData = data.DISPLAY;
-    return {
-      coinList: Object.keys(displayData).map(k => displayData[k])
-    };
-  }
-
   static async getInitialProps({ req }) {
-    return this.fetchData();
+    return { coinNames: await fetchCoinNames(), ...(await fetchCoinList()) };
   }
   constructor(props) {
     super(props);
-    this.state = { coinList: props.coinList };
+    this.state = { coinNames: props.coinNames, coinList: props.coinList };
   }
   componentDidMount() {
     this.timerID = setInterval(async () => {
-      const newData = await this.constructor.fetchData();
+      const newData = await fetchCoinList();
       this.setState(newData);
     }, 10000);
   }
@@ -35,12 +22,14 @@ class Index extends Component {
     clearInterval(this.timerID);
   }
   render() {
-    const { coinList } = this.state;
-    return <Layout title="Home">{coinList && <CoinList list={coinList} />}</Layout>;
+    const { coinNames, coinList } = this.state;
+    console.log(coinNames);
+    return <Layout title="Home">{coinList && <CoinList names={coinNames} list={coinList} />}</Layout>;
   }
 }
 
 Index.propTypes = {
+  coinNames: object,
   coinList: array
 };
 

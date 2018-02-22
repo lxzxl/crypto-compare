@@ -1,6 +1,6 @@
-import { array } from 'prop-types';
+import { array, object } from 'prop-types';
 
-const List = ({ list }) => {
+const List = ({ names, list }) => {
   return (
     <table className="table is-hoverable is-fullwidth">
       <thead>
@@ -13,9 +13,9 @@ const List = ({ list }) => {
         </tr>
       </thead>
       <tbody>
-        {list.map(({USD}) => (
+        {list.map(({ USD }) => (
           <tr key={USD.FROMSYMBOL}>
-            <th>{USD.FROMSYMBOL}</th>
+            <th>{names[USD.FROMSYMBOL].CoinName}</th>
             <th>{USD.FROMSYMBOL}</th>
             <th>{USD.PRICE}</th>
             <th>{USD.MKTCAP}</th>
@@ -28,6 +28,7 @@ const List = ({ list }) => {
 };
 
 List.propTypes = {
+  names: object,
   list: array
 };
 
