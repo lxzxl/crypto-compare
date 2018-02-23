@@ -25,18 +25,20 @@ const Names = [
 const NamesStr = Names.join(',');
 
 export const fetchCoinNames = (function() {
-  let cacheResult;
+  let cacheResult = {
+    baseImageUrl: null,
+    data: null
+  };
   return async names => {
-    if (!cacheResult) {
-      const { data: { BaseImageUrl, Data } } = await axios.get('https://min-api.cryptocompare.com/data/all/coinlist');
-      cacheResult = Object.keys(Data)
+    if (!cacheResult.data) {
+      const result = await axios.get('https://min-api.cryptocompare.com/data/all/coinlist');
+      const { BaseImageUrl, Data } = result.data;
+      cacheResult.baseImageUrl = BaseImageUrl;
+      cacheResult.data = Object.keys(Data)
         .filter(coin => Names.includes(coin))
-        .map(coin => Data[coin]);
+        .reduce((prev, coin) => ((prev[coin] = Data[coin]), prev), {});
     }
-    return {
-      BaseImageUrl,
-      Data
-    };
+    return cacheResult;
   };
 })();
 
@@ -49,6 +51,6 @@ export async function fetchCoinList() {
   });
   const displayData = data.DISPLAY;
   return {
-    coinList: Object.keys(displayData).map(k => displayData[k])
+    coinList: Object.keys(displayData).map(k => ({ __key: k, ...displayData[k] }))
   };
 }

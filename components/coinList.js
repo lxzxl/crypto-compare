@@ -13,9 +13,9 @@ const List = ({ names, list }) => {
         </tr>
       </thead>
       <tbody>
-        {list.map(({ USD }) => (
+        {list.map(({ __key, USD }) => (
           <tr key={USD.FROMSYMBOL}>
-            <th>{names[USD.FROMSYMBOL].CoinName}</th>
+            <th>{names[__key].Name}</th>
             <th>{USD.FROMSYMBOL}</th>
             <th>{USD.PRICE}</th>
             <th>{USD.MKTCAP}</th>
