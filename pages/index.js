@@ -24,7 +24,11 @@ class Index extends Component {
   }
   render() {
     const { baseImageUrl, coinNames, coinList } = this.state;
-    return <Layout title="Home">{coinList && <CoinList names={coinNames} list={coinList} />}</Layout>;
+    return (
+      <Layout title="Home">
+        {coinList && <CoinList baseImageUrl={baseImageUrl} names={coinNames} list={coinList} />}
+      </Layout>
+    );
   }
 }
 

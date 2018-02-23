@@ -1,6 +1,6 @@
-import { array, object } from 'prop-types';
+import { string, array, object } from 'prop-types';
 
-const List = ({ names, list }) => {
+const List = ({ baseImageUrl, names, list }) => {
   return (
     <table className="table is-hoverable is-fullwidth">
       <thead>
@@ -15,8 +15,13 @@ const List = ({ names, list }) => {
       <tbody>
         {list.map(({ __key, USD }) => (
           <tr key={USD.FROMSYMBOL}>
+            <th>
+              <p className="is-flex">
+                <img className="icon" src={`${baseImageUrl}/${names[__key].ImageUrl}`} />
+                <span>{names[__key].CoinName}</span>
+              </p>
+            </th>
             <th>{names[__key].Name}</th>
-            <th>{USD.FROMSYMBOL}</th>
             <th>{USD.PRICE}</th>
             <th>{USD.MKTCAP}</th>
             <th>{USD.CHANGE24HOUR}</th>
@@ -28,6 +33,7 @@ const List = ({ names, list }) => {
 };
 
 List.propTypes = {
+  baseImageUrl: string,
   names: object,
   list: array
 };

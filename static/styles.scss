@@ -1,1 +1,5 @@
 @import '~bulma/css/bulma.css';
+
+.icon + span {
+    padding-left: 1rem;
+}
