@@ -6,8 +6,8 @@ import CoinList from '../components/coinList';
 
 class Index extends Component {
   static async getInitialProps({ req }) {
-    const { baseImageUrl, data: coinNames } = await fetchCoinNames();
-    return { baseImageUrl, coinNames, ...(await fetchCoinList()) };
+    const [{ baseImageUrl, data: coinNames }, coinList] = await Promise.all([fetchCoinNames(), fetchCoinList()]);
+    return { baseImageUrl, coinNames, ...coinList };
   }
   constructor(props) {
     super(props);
