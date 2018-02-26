@@ -12,14 +12,17 @@ const History = ({ baseImageUrl, symbol, info, price, history }) => {
           <p className="title is-flex">
             <img className="icon is-medium" src={`${baseImageUrl}/${info.ImageUrl}`} />
             <span>{info.CoinName}</span>
+            <span className="tag is-success">$ {price}</span>
           </p>
-          <p className="subtitle price">$ {price}</p>
           <CoinHistory data={history} />
         </div>
       </div>
       <style jsx>{`
         .title.is-flex {
           align-items: center;
+        }
+        .title.is-flex span {
+          margin-left: 1rem;
         }
       `}</style>
     </Layout>
