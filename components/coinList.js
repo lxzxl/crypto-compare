@@ -1,6 +1,8 @@
-import { string, array, object } from 'prop-types';
+import { string, array, object, func } from 'prop-types';
+import CoinRow from './coinRow';
+import Row from './coinRow';
 
-const List = ({ baseImageUrl, names, list }) => {
+const List = ({ baseImageUrl, names, list, onClick }) => {
   return (
     <table className="table is-hoverable is-fullwidth">
       <thead>
@@ -14,18 +16,7 @@ const List = ({ baseImageUrl, names, list }) => {
       </thead>
       <tbody>
         {list.map(({ __key, USD }) => (
-          <tr key={USD.FROMSYMBOL}>
-            <th>
-              <p className="is-flex">
-                <img className="icon" src={`${baseImageUrl}/${names[__key].ImageUrl}`} />
-                <span>{names[__key].CoinName}</span>
-              </p>
-            </th>
-            <th>{names[__key].Name}</th>
-            <th>{USD.PRICE}</th>
-            <th>{USD.MKTCAP}</th>
-            <th>{USD.CHANGE24HOUR}</th>
-          </tr>
+          <Row symbol={__key} info={names[__key]} price={USD} baseImageUrl={baseImageUrl} />
         ))}
       </tbody>
     </table>
