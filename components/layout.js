@@ -10,7 +10,9 @@ const Layout = props => (
       <div className="hero-body">
         <div className="container">
           <h1 className="title">
-            <Link href={'/'}><a>Crypto Compare</a></Link>
+            <Link href={'/'}>
+              <a>Crypto Compare</a>
+            </Link>
           </h1>
         </div>
       </div>
