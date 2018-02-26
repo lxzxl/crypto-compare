@@ -1,4 +1,5 @@
 import '../static/styles.scss';
+import Link from 'next/link';
 import Head from './head';
 const Fragment = React.Fragment;
 
@@ -8,7 +9,9 @@ const Layout = props => (
     <section className="hero is-primary is-small">
       <div className="hero-body">
         <div className="container">
-          <h1 className="title">Crypto Compare</h1>
+          <h1 className="title">
+            <Link href={'/'}><a>Crypto Compare</a></Link>
+          </h1>
         </div>
       </div>
     </section>
@@ -16,7 +19,7 @@ const Layout = props => (
       <div className="container">{props.children}</div>
       <style jsx>{`
         .content {
-          padding: 3rem 5%;
+          padding: 1rem 5% 3rem;
         }
       `}</style>
     </section>
