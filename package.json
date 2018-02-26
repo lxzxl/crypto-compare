@@ -1,5 +1,5 @@
 {
-  "name": "create-next-example-app",
+  "name": "crypto-compare",
   "version": "0.0.1",
   "scripts": {
     "dev": "next",
