@@ -40,7 +40,7 @@ class History extends React.PureComponent {
     const { price, history } = this.state;
     const tabs = ['24 Hours', '1 Week', '1 Month', '1 Year'];
     return (
-      <Layout title="History">
+      <Layout title={`History of ${symbol}`}>
         <div className="tile is-parent">
           <div className="tile is-child">
             <p className="title is-flex">
