@@ -16,7 +16,7 @@ const List = ({ baseImageUrl, names, list, onClick }) => {
       </thead>
       <tbody>
         {list.map(({ __key, USD }) => (
-          <Row symbol={__key} info={names[__key]} price={USD} baseImageUrl={baseImageUrl} />
+          <Row key={__key} symbol={__key} info={names[__key]} price={USD} baseImageUrl={baseImageUrl} />
         ))}
       </tbody>
     </table>

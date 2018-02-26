@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const Row = ({symbol, info, price, baseImageUrl}) => {
   return (
-    <Link key={symbol} href={{ pathname: '/history', query: { symbol } }}>
+    <Link href={{ pathname: '/history', query: { symbol } }}>
       <tr>
         <th>
           <p className="is-flex">
