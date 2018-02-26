@@ -56,7 +56,7 @@ export async function fetchCoinList() {
   };
 }
 
-export async function fetchCoinPrice(symbol){
+export async function fetchCoinPrice(symbol) {
   const { data } = await axios.get('https://min-api.cryptocompare.com/data/price', {
     params: {
       fsym: symbol,
@@ -66,17 +66,30 @@ export async function fetchCoinPrice(symbol){
   return data[ToSymbolStr];
 }
 
-export async function fetchCoinHistory(symbol, type = 'histominute') {
-  const params = {
-    histominute: {
-      aggregate: 15
+export async function fetchCoinHistory(symbol, tab = '24 Hours') {
+  const config = {
+    '24 Hours': {
+      path: 'histominute',
+      params: { limit: 96, aggregate: 15 }
+    },
+    '1 Week': {
+      path: 'histohour',
+      params: { limit: 168, aggregate: 1 }
+    },
+    '1 Month': {
+      path: 'histohour',
+      params: { limit: 144, aggregate: 5 }
+    },
+    '1 Year': {
+      path: 'histoday',
+      params: { limit: 185, aggregate: 2 }
     }
-  }[type];
-  const { data } = await axios.get(`https://min-api.cryptocompare.com/data/${type}`, {
+  }[tab];
+  const { data } = await axios.get(`https://min-api.cryptocompare.com/data/${config.path}`, {
     params: {
       fsym: symbol,
       tsym: ToSymbolStr,
-      ...params
+      ...config.params
     }
   });
   return data.Data;

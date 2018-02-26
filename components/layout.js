@@ -15,10 +15,10 @@ const Layout = props => (
         </div>
       </div>
     </section>
-    <section className="section content">
-      <div className="container">{props.children}</div>
+    <section className="section">
+      {props.children}
       <style jsx>{`
-        .content {
+        section {
           padding: 1rem 5% 3rem;
         }
       `}</style>
